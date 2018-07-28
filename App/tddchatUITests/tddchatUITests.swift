@@ -18,6 +18,4 @@ class TddChatUITests: XCTestCase {
     override func tearDown() {
         super.tearDown()
     }
-    func testExample() {
-    }
 }
