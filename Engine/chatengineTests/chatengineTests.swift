@@ -29,8 +29,12 @@ class chatengineTests: XCTestCase {
         let expectation = XCTestExpectation(description: "Download apple.com home page")
         
         
-        ChatManager.shared.connect(username: username, password: password, completion: {
+        ChatManager.shared.connect(username: username, password: password, completion: { result in
             
+            switch result {
+            case .success(let result): XCTAssert(result == true)
+            case .failure(let error as NSError): XCTAssert( error.code != 0)
+            }
             // Fulfill the expectation to indicate that the background task has finished successfully.
             expectation.fulfill()
         })
