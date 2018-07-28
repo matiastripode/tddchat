@@ -16,6 +16,7 @@
 		3CABC461210CB792004F37BE /* tddchatUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CABC460210CB792004F37BE /* tddchatUITests.swift */; };
 		3CABC49A210CC892004F37BE /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3CABC498210CC892004F37BE /* Crashlytics.framework */; };
 		3CABC49B210CC892004F37BE /* Fabric.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3CABC499210CC892004F37BE /* Fabric.framework */; };
+		3CABC4B6210CD3D6004F37BE /* chatengine.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3CABC4B3210CD398004F37BE /* chatengine.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -32,6 +33,20 @@
 			proxyType = 1;
 			remoteGlobalIDString = 3CABC43C210CB790004F37BE;
 			remoteInfo = tddchat;
+		};
+		3CABC4B2210CD398004F37BE /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 3CABC4AC210CD398004F37BE /* chatengine.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 3CABC478210CB84D004F37BE;
+			remoteInfo = chatengine;
+		};
+		3CABC4B4210CD398004F37BE /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 3CABC4AC210CD398004F37BE /* chatengine.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 3CABC481210CB84E004F37BE;
+			remoteInfo = chatengineTests;
 		};
 /* End PBXContainerItemProxy section */
 
@@ -51,6 +66,7 @@
 		3CABC462210CB792004F37BE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3CABC498210CC892004F37BE /* Crashlytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Crashlytics.framework; path = ThirdParty/Crashlytics.framework; sourceTree = "<group>"; };
 		3CABC499210CC892004F37BE /* Fabric.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Fabric.framework; path = ThirdParty/Fabric.framework; sourceTree = "<group>"; };
+		3CABC4AC210CD398004F37BE /* chatengine.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = chatengine.xcodeproj; path = ../Engine/chatengine.xcodeproj; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,6 +74,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3CABC4B6210CD3D6004F37BE /* chatengine.framework in Frameworks */,
 				3CABC49A210CC892004F37BE /* Crashlytics.framework in Frameworks */,
 				3CABC49B210CC892004F37BE /* Fabric.framework in Frameworks */,
 			);
@@ -83,6 +100,7 @@
 		3CABC434210CB790004F37BE = {
 			isa = PBXGroup;
 			children = (
+				3CABC4AC210CD398004F37BE /* chatengine.xcodeproj */,
 				3CABC43F210CB790004F37BE /* tddchat */,
 				3CABC454210CB792004F37BE /* tddchatTests */,
 				3CABC45F210CB792004F37BE /* tddchatUITests */,
@@ -139,6 +157,15 @@
 				3CABC499210CC892004F37BE /* Fabric.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		3CABC4AD210CD398004F37BE /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				3CABC4B3210CD398004F37BE /* chatengine.framework */,
+				3CABC4B5210CD398004F37BE /* chatengineTests.xctest */,
+			);
+			name = Products;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -233,6 +260,12 @@
 			mainGroup = 3CABC434210CB790004F37BE;
 			productRefGroup = 3CABC43E210CB790004F37BE /* Products */;
 			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = 3CABC4AD210CD398004F37BE /* Products */;
+					ProjectRef = 3CABC4AC210CD398004F37BE /* chatengine.xcodeproj */;
+				},
+			);
 			projectRoot = "";
 			targets = (
 				3CABC43C210CB790004F37BE /* tddchat */,
@@ -241,6 +274,23 @@
 			);
 		};
 /* End PBXProject section */
+
+/* Begin PBXReferenceProxy section */
+		3CABC4B3210CD398004F37BE /* chatengine.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = chatengine.framework;
+			remoteRef = 3CABC4B2210CD398004F37BE /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		3CABC4B5210CD398004F37BE /* chatengineTests.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = chatengineTests.xctest;
+			remoteRef = 3CABC4B4210CD398004F37BE /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
 		3CABC43B210CB790004F37BE /* Resources */ = {

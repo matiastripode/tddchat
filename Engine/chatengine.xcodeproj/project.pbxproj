@@ -6,6 +6,20 @@
 	objectVersion = 50;
 	objects = {
 
+/* Begin PBXAggregateTarget section */
+		3CABC49D210CD114004F37BE /* UniversalChatFramework */ = {
+			isa = PBXAggregateTarget;
+			buildConfigurationList = 3CABC49E210CD115004F37BE /* Build configuration list for PBXAggregateTarget "UniversalChatFramework" */;
+			buildPhases = (
+				3CABC4A1210CD11C004F37BE /* ShellScript */,
+			);
+			dependencies = (
+			);
+			name = UniversalChatFramework;
+			productName = ChatFramework;
+		};
+/* End PBXAggregateTarget section */
+
 /* Begin PBXBuildFile section */
 		3CABC482210CB84E004F37BE /* chatengine.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3CABC478210CB84D004F37BE /* chatengine.framework */; };
 		3CABC487210CB84E004F37BE /* chatengineTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CABC486210CB84E004F37BE /* chatengineTests.swift */; };
@@ -112,7 +126,7 @@
 				3CABC474210CB84D004F37BE /* Frameworks */,
 				3CABC475210CB84D004F37BE /* Headers */,
 				3CABC476210CB84D004F37BE /* Resources */,
-				3CABC495210CC0AF004F37BE /* ShellScript */,
+				3CABC495210CC0AF004F37BE /* Run Script - SwiftLint */,
 			);
 			buildRules = (
 			);
@@ -158,6 +172,9 @@
 					3CABC480210CB84E004F37BE = {
 						CreatedOnToolsVersion = 9.3.1;
 					};
+					3CABC49D210CD114004F37BE = {
+						CreatedOnToolsVersion = 9.3.1;
+					};
 				};
 			};
 			buildConfigurationList = 3CABC472210CB84D004F37BE /* Build configuration list for PBXProject "chatengine" */;
@@ -174,6 +191,7 @@
 			targets = (
 				3CABC477210CB84D004F37BE /* chatengine */,
 				3CABC480210CB84E004F37BE /* chatengineTests */,
+				3CABC49D210CD114004F37BE /* UniversalChatFramework */,
 			);
 		};
 /* End PBXProject section */
@@ -196,7 +214,21 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		3CABC495210CC0AF004F37BE /* ShellScript */ = {
+		3CABC495210CC0AF004F37BE /* Run Script - SwiftLint */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Run Script - SwiftLint";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "${SRCROOT}/ThirdParty/SwiftLint/swiftlint lint --strict";
+		};
+		3CABC4A1210CD11C004F37BE /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -207,7 +239,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "${SRCROOT}/ThirdParty/SwiftLint/swiftlint lint --strict";
+			shellScript = "UNIVERSAL_OUTPUTFOLDER=${BUILD_DIR}/${CONFIGURATION}-universal\n\n# make sure the output directory exists\nmkdir -p \"${UNIVERSAL_OUTPUTFOLDER}\"\n\n# Step 1. Build Device and Simulator versions\nxcodebuild -target \"ChatEngine\" ONLY_ACTIVE_ARCH=NO -configuration ${CONFIGURATION} -sdk iphoneos  BUILD_DIR=\"${BUILD_DIR}\" BUILD_ROOT=\"${BUILD_ROOT}\" clean build\nxcodebuild -target \"ChatEngine\" -configuration ${CONFIGURATION} -sdk iphonesimulator ONLY_ACTIVE_ARCH=NO BUILD_DIR=\"${BUILD_DIR}\" BUILD_ROOT=\"${BUILD_ROOT}\" clean build\n\n# Step 2. Copy the framework structure (from iphoneos build) to the universal folder\ncp -R \"${BUILD_DIR}/${CONFIGURATION}-iphoneos/ChatEngine.framework\" \"${UNIVERSAL_OUTPUTFOLDER}/\"\n\n# Step 3. Copy Swift modules from iphonesimulator build (if it exists) to the copied framework directory\nSIMULATOR_SWIFT_MODULES_DIR=\"${BUILD_DIR}/${CONFIGURATION}-iphonesimulator/ChatEngine.framework/Modules/ChatEngine.swiftmodule/.\"\nif [ -d \"${SIMULATOR_SWIFT_MODULES_DIR}\" ]; then\ncp -R \"${SIMULATOR_SWIFT_MODULES_DIR}\" \"${UNIVERSAL_OUTPUTFOLDER}/ChatEngine.framework/Modules/ChatEngine.swiftmodule\"\nfi\n\n# Step 4. Create universal binary file using lipo and place the combined executable in the copied framework directory\nlipo -create -output \"${UNIVERSAL_OUTPUTFOLDER}/ChatEngine.framework/ChatEngine\" \"${BUILD_DIR}/${CONFIGURATION}-iphonesimulator/ChatEngine.framework/ChatEngine\" \"${BUILD_DIR}/${CONFIGURATION}-iphoneos/ChatEngine.framework/ChatEngine\"\n\n# Step 5. Convenience step to copy the framework to the project's directory\ncp -R \"${UNIVERSAL_OUTPUTFOLDER}/ChatEngine.framework\" \"${PROJECT_DIR}\"\n\n# Step 6. Convenience step to open the project's directory in Finder\nopen \"${PROJECT_DIR}\"";
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -451,6 +483,24 @@
 			};
 			name = Release;
 		};
+		3CABC49F210CD115004F37BE /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = TKH856G5A9;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		3CABC4A0210CD115004F37BE /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = TKH856G5A9;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -477,6 +527,15 @@
 			buildConfigurations = (
 				3CABC490210CB84E004F37BE /* Debug */,
 				3CABC491210CB84E004F37BE /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		3CABC49E210CD115004F37BE /* Build configuration list for PBXAggregateTarget "UniversalChatFramework" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				3CABC49F210CD115004F37BE /* Debug */,
+				3CABC4A0210CD115004F37BE /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

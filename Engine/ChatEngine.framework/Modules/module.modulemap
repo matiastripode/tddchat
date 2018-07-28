@@ -1,0 +1,6 @@
+framework module chatengine {
+  umbrella header "chatengine.h"
+
+  export *
+  module * { export * }
+}

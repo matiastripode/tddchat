@@ -8,16 +8,16 @@
 
 import Foundation
 
-enum  ChatManagerResult<T> {
+public enum  ChatManagerResult<T> {
     case success(result: T)
     case failure(error: Error)
 }
 
-typealias ChatManagerConnectCompletion =  (ChatManagerResult<Bool>) -> Void
+public typealias ChatManagerConnectCompletion =  (ChatManagerResult<Bool>) -> Void
 
-class ChatManager {
-    static let shared = ChatManager()
-    func connect(username: String, password: String, completion: ChatManagerConnectCompletion) {
+public final class ChatManager {
+    public static let shared = ChatManager()
+    public func connect(username: String, password: String, completion: ChatManagerConnectCompletion) {
         //completion(.failure(error: NSError(domain: "", code: 0, userInfo: [:])))
         completion(.success(result: true))
     }
