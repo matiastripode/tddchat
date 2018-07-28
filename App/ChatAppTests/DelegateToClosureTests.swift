@@ -49,7 +49,7 @@ class Todo {
         self.title = title
     }
     func asyncTask() {
-        DispatchQueue.main.asyncAfter(deadline: .now() + 5.5) { [weak self] in
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) { [weak self] in
             if let strongSelf = self {
                 strongSelf.completed = true
             }
