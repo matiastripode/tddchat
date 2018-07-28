@@ -13,9 +13,6 @@ class ViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        ChatManager.shared.connect(username: "", password: "") { (result) in
-            print(result)
-        }
     }
 
     override func didReceiveMemoryWarning() {

@@ -26,6 +26,14 @@
 		3CABC489210CB84E004F37BE /* chatengine.h in Headers */ = {isa = PBXBuildFile; fileRef = 3CABC47B210CB84D004F37BE /* chatengine.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		3CABC493210CB9FA004F37BE /* ChatManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CABC492210CB9FA004F37BE /* ChatManager.swift */; };
 		3CABC494210CB9FA004F37BE /* ChatManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CABC492210CB9FA004F37BE /* ChatManager.swift */; };
+		3CABC4B8210CF4FC004F37BE /* DIContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CABC4B7210CF4FC004F37BE /* DIContainer.swift */; };
+		3CABC4B9210CF4FC004F37BE /* DIContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CABC4B7210CF4FC004F37BE /* DIContainer.swift */; };
+		3CABC4BB210CFB80004F37BE /* ChatServiceSockets.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CABC4BA210CFB80004F37BE /* ChatServiceSockets.swift */; };
+		3CABC4BC210CFB80004F37BE /* ChatServiceSockets.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CABC4BA210CFB80004F37BE /* ChatServiceSockets.swift */; };
+		3CABC4BE210CFBF1004F37BE /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CABC4BD210CFBF1004F37BE /* Message.swift */; };
+		3CABC4BF210CFBF1004F37BE /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CABC4BD210CFBF1004F37BE /* Message.swift */; };
+		3CABC4C1210CFC4D004F37BE /* StringExtentions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CABC4C0210CFC4D004F37BE /* StringExtentions.swift */; };
+		3CABC4C2210CFC4D004F37BE /* StringExtentions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CABC4C0210CFC4D004F37BE /* StringExtentions.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -46,6 +54,10 @@
 		3CABC486210CB84E004F37BE /* chatengineTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = chatengineTests.swift; sourceTree = "<group>"; };
 		3CABC488210CB84E004F37BE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3CABC492210CB9FA004F37BE /* ChatManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatManager.swift; sourceTree = "<group>"; };
+		3CABC4B7210CF4FC004F37BE /* DIContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = DIContainer.swift; path = CI/DIContainer.swift; sourceTree = "<group>"; };
+		3CABC4BA210CFB80004F37BE /* ChatServiceSockets.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ChatServiceSockets.swift; path = Sockets/ChatServiceSockets.swift; sourceTree = "<group>"; };
+		3CABC4BD210CFBF1004F37BE /* Message.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Message.swift; path = Models/Message.swift; sourceTree = "<group>"; };
+		3CABC4C0210CFC4D004F37BE /* StringExtentions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = StringExtentions.swift; path = Extensions/StringExtentions.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -91,6 +103,10 @@
 				3CABC47B210CB84D004F37BE /* chatengine.h */,
 				3CABC47C210CB84D004F37BE /* Info.plist */,
 				3CABC492210CB9FA004F37BE /* ChatManager.swift */,
+				3CABC4B7210CF4FC004F37BE /* DIContainer.swift */,
+				3CABC4BA210CFB80004F37BE /* ChatServiceSockets.swift */,
+				3CABC4BD210CFBF1004F37BE /* Message.swift */,
+				3CABC4C0210CFC4D004F37BE /* StringExtentions.swift */,
 			);
 			path = chatengine;
 			sourceTree = "<group>";
@@ -248,6 +264,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3CABC4B8210CF4FC004F37BE /* DIContainer.swift in Sources */,
+				3CABC4C1210CFC4D004F37BE /* StringExtentions.swift in Sources */,
+				3CABC4BE210CFBF1004F37BE /* Message.swift in Sources */,
+				3CABC4BB210CFB80004F37BE /* ChatServiceSockets.swift in Sources */,
 				3CABC493210CB9FA004F37BE /* ChatManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -256,7 +276,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3CABC4BC210CFB80004F37BE /* ChatServiceSockets.swift in Sources */,
+				3CABC4C2210CFC4D004F37BE /* StringExtentions.swift in Sources */,
 				3CABC487210CB84E004F37BE /* chatengineTests.swift in Sources */,
+				3CABC4BF210CFBF1004F37BE /* Message.swift in Sources */,
+				3CABC4B9210CF4FC004F37BE /* DIContainer.swift in Sources */,
 				3CABC494210CB9FA004F37BE /* ChatManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

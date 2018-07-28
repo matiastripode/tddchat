@@ -15,10 +15,18 @@ public enum  ChatManagerResult<T> {
 
 public typealias ChatManagerConnectCompletion =  (ChatManagerResult<Bool>) -> Void
 
-public final class ChatManager {
-    public static let shared = ChatManager()
-    public func connect(username: String, password: String, completion: ChatManagerConnectCompletion) {
+public protocol ChatService {
+    func connect(username: String, password: String, completion: @escaping  ChatManagerConnectCompletion)
+}
+
+public final class ChatManager: ChatService {
+    private let dependencies: DependencyContainer
+    init(dependencies: DependencyContainer) {
+        self.dependencies = dependencies
+    }
+    public func connect(username: String, password: String, completion:  @escaping ChatManagerConnectCompletion) {
         //completion(.failure(error: NSError(domain: "", code: 0, userInfo: [:])))
+        dependencies.service.connect(username: username, password: password, completion: completion)
         completion(.success(result: true))
     }
 }
