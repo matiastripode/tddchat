@@ -40,7 +40,4 @@ class ChatEngineTests: XCTestCase {
         })
         wait(for: [expectation], timeout: 10.0)
     }
-    func testConfigureChatManager() {
-        //ChatManager.init(dependencies: DI.ChatManager)
-    }
 }
