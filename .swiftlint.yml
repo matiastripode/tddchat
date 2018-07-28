@@ -1,0 +1,142 @@
+#------- COMMENT to enable a rule, UNCOMMENT to disable: -------#
+#-------    these rules are usually enabled by default   -------#
+disabled_rules:
+
+# List of rules: https://github.com/realm/SwiftLint/blob/master/Rules.md
+
+#--- Stylistic rules ---#
+- syntactic_sugar 				# easy to fix, but no auto-correct
+- control_statement 			# ease to fix, but no auto-correct
+- identifier_name 				# requires refactor
+- trailing_whitespace 			# ease to fix, needs review
+- switch_case_alignment
+#- opening_brace
+#- vertical_whitespace
+#- statement_position
+#- trailing_newline
+#- empty_enum_arguments
+#- implicit_getter
+#- trailing_semicolon
+#- legacy_constructor
+#- return_arrow_whitespace
+#- shorthand_operator
+#- vertical_parameter_alignment
+#- leading_whitespace
+#- mark
+#- operator_whitespace
+#- closing_brace
+#- compiler_protocol_init
+#- redundant_void_return
+#- generic_type_name
+#- attributes
+#- closure_parameter_position
+#- trailing_comma
+
+# Decided to disable this rule, because Swift autocomplete
+# sometimes suggests code like this but using parentheses
+- empty_parentheses_with_trailing_closure
+
+
+#--- Hygienic rules ---#
+- function_body_length 			# requires refactor
+- line_length 					# requires refactor, length could be configured
+- type_body_length 				# requires refactor
+- file_length 					# requires refactor
+- multiple_closures_with_trailing_closure
+#-xctfail_message
+
+#--- Convention rules ---#
+- redundant_string_enum_value 	# easy to fix, but no autocorrect
+- unused_optional_binding 		# easy to fix, but no autocorrect
+- unused_closure_parameter 		# easy to fix, but no autocorrect
+- type_name 					# requires refactor
+- for_where 					# fairly easy to fix
+- colon               # easy to fix, but no autocorrect
+#- comma
+#- redundant_optional_initialization
+#- unused_enumerated
+#- redundant_discardable_let
+#- legacy_cggeometry_functions
+#- legacy_nsgeometry_functions
+#- private_over_fileprivate
+#- protocol_property_accessors_order
+#- empty_parameters
+#- void_return
+#- legacy_constant
+#- unneeded_break_in_switch
+
+#--- Code smell rules ---#
+- function_parameter_count 		# requires refactor
+- force_cast 					# requires refactor
+- cyclomatic_complexity 		# requires refactor
+- nesting 						# requires refactor
+- todo 							# requires analysis and maybe refactor
+- large_tuple 					# requires refactor
+#- force_try
+
+#--- Bug avoiding rules ---#
+- valid_ibinspectable 				# needs review
+- notification_center_detachment 	# needs review
+#- discarded_notification_center_observer
+#- class_delegate_protocol
+#- dynamic_inline
+#- weak_delegate
+#- private_unit_test
+#- private_outlet
+
+#--- Others ---#
+- custom_rules # for custom rules check https://github.com/realm/SwiftLint
+
+
+#------- UNCOMMENT to enable a rule, COMMENT to disable: -------#
+#-------   these rules are usually disabled by default   -------#
+opt_in_rules:
+
+#--- Stylistic rules ---#
+#- vertical_parameter_alignment_on_call		# no auto-correct
+#- closure_end_indentation 					# needs review
+#- conditional_returns_on_newline			# needs review
+#- let_var_whitespace						# needs review
+#- number_separator							# needs review
+#- switch_case_on_newline					# needs review
+#- unneeded_parentheses_in_closure_argument	# needs review
+- operator_usage_whitespace
+- closure_spacing
+- multiline_parameters
+
+#--- Convention rules ---#
+#- explicit_init					# needs review
+#- explicit_top_level_acl			# needs review
+#- file_header						# review
+#- implicit_return					# review
+#- nimble_operator					# needs review
+
+#--- Code smell rules ---#
+- force_unwrapping					# requires refactor
+
+#--- Bug avoiding rules ---#
+#- empty_count			 			# easy but no auto-corrcect
+#- overridden_super_call			# needs review
+#- prohibited_super_call			# needs review
+- fatal_error_message
+- override_in_extension
+
+#--- Other rules ---#
+#- explicit_type_interface			# needs review
+#- extension_access_modifier 		# needs review
+#- first_where						# needs review
+#- implicitly_unwrapped_optional	# needs review
+#- no_extension_access_modifier		# needs review
+#- object_literal					# needs review
+#- redundant_nil_coalescing			# needs review
+#- sorted_imports					# needs review
+#- strict_fileprivate				# needs review
+
+
+#------- Other configurations -------#
+excluded:
+  - Carthage
+  - excaliburTests
+  - excaliburUITests
+
+reporter: "xcode" # reporter type (xcode, json, csv, checkstyle, junit, html, emoji)

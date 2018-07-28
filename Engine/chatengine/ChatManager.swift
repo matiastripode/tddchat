@@ -17,8 +17,8 @@ typealias ChatManagerConnectCompletion =  (ChatManagerResult<Bool>) -> Void
 
 class ChatManager {
     static let shared = ChatManager()
-    
     func connect(username: String, password: String, completion: ChatManagerConnectCompletion) {
+        //completion(.failure(error: NSError(domain: "", code: 0, userInfo: [:])))
         completion(.success(result: true))
     }
 }

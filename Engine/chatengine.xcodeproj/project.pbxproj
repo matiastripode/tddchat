@@ -112,6 +112,7 @@
 				3CABC474210CB84D004F37BE /* Frameworks */,
 				3CABC475210CB84D004F37BE /* Headers */,
 				3CABC476210CB84D004F37BE /* Resources */,
+				3CABC495210CC0AF004F37BE /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -193,6 +194,22 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		3CABC495210CC0AF004F37BE /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "${SRCROOT}/ThirdParty/SwiftLint/swiftlint lint --strict";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		3CABC473210CB84D004F37BE /* Sources */ = {
