@@ -1,4 +1,7 @@
 # TDD Chat iOS
+
+[![Build Status](https://travis-ci.com/matiastripode/tddchat.svg?branch=master)](https://travis-ci.com/matiastripode/tddchat)
+
 The idea of this project is to take Chat Example from [raywenderlich](https://www.raywenderlich.com/157128/real-time-communication-streams-tutorial-ios)
 and refactor it using TDD techniques taught here [essentialdeveloper](https://www.essentialdeveloper.com/)
 Besides it has code guidelines, static code analysis, crash reports and continuous integration.
