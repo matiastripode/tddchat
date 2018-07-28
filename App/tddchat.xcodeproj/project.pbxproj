@@ -14,6 +14,8 @@
 		3CABC44B210CB792004F37BE /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3CABC449210CB792004F37BE /* LaunchScreen.storyboard */; };
 		3CABC456210CB792004F37BE /* tddchatTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CABC455210CB792004F37BE /* tddchatTests.swift */; };
 		3CABC461210CB792004F37BE /* tddchatUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CABC460210CB792004F37BE /* tddchatUITests.swift */; };
+		3CABC49A210CC892004F37BE /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3CABC498210CC892004F37BE /* Crashlytics.framework */; };
+		3CABC49B210CC892004F37BE /* Fabric.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3CABC499210CC892004F37BE /* Fabric.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -47,6 +49,8 @@
 		3CABC45C210CB792004F37BE /* tddchatUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = tddchatUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		3CABC460210CB792004F37BE /* tddchatUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = tddchatUITests.swift; sourceTree = "<group>"; };
 		3CABC462210CB792004F37BE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		3CABC498210CC892004F37BE /* Crashlytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Crashlytics.framework; path = ThirdParty/Crashlytics.framework; sourceTree = "<group>"; };
+		3CABC499210CC892004F37BE /* Fabric.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Fabric.framework; path = ThirdParty/Fabric.framework; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -54,6 +58,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3CABC49A210CC892004F37BE /* Crashlytics.framework in Frameworks */,
+				3CABC49B210CC892004F37BE /* Fabric.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -81,6 +87,7 @@
 				3CABC454210CB792004F37BE /* tddchatTests */,
 				3CABC45F210CB792004F37BE /* tddchatUITests */,
 				3CABC43E210CB790004F37BE /* Products */,
+				3CABC497210CC892004F37BE /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -125,6 +132,15 @@
 			path = tddchatUITests;
 			sourceTree = "<group>";
 		};
+		3CABC497210CC892004F37BE /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				3CABC498210CC892004F37BE /* Crashlytics.framework */,
+				3CABC499210CC892004F37BE /* Fabric.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -135,6 +151,8 @@
 				3CABC439210CB790004F37BE /* Sources */,
 				3CABC43A210CB790004F37BE /* Frameworks */,
 				3CABC43B210CB790004F37BE /* Resources */,
+				3CABC496210CC7F9004F37BE /* Run Script - Crashlytics */,
+				3CABC49C210CCA2B004F37BE /* Run Script - SwiftLint */,
 			);
 			buildRules = (
 			);
@@ -250,6 +268,37 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		3CABC496210CC7F9004F37BE /* Run Script - Crashlytics */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Run Script - Crashlytics";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "${PROJECT_DIR}/ThirdParty/Fabric.framework/run  fbd4c584d72f4098db498fd7bc9ff59509f7a69c e6abe95efd3e524b041fd0b044e11c20415489006be8be94dc255e278f994fc2";
+		};
+		3CABC49C210CCA2B004F37BE /* Run Script - SwiftLint */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Run Script - SwiftLint";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "${SRCROOT}/ThirdParty/SwiftLint/swiftlint lint --strict";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		3CABC439210CB790004F37BE /* Sources */ = {
@@ -432,6 +481,10 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = TKH856G5A9;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/ThirdParty",
+				);
 				INFOPLIST_FILE = tddchat/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -450,6 +503,10 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = TKH856G5A9;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/ThirdParty",
+				);
 				INFOPLIST_FILE = tddchat/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
