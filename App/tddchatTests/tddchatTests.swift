@@ -7,7 +7,7 @@
 //
 
 import XCTest
-@testable import tddchat
+@testable import ChatApp
 
 class TddChatTests: XCTestCase {
     override func setUp() {

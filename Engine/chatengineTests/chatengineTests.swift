@@ -9,6 +9,12 @@
 import XCTest
 @testable import chatengine
 
+final class MockChatService: ChatService {
+    public func connect(username: String, password: String, completion: @escaping ChatManagerConnectCompletion) {
+        //completion(.failure(error: NSError(domain: "", code: 0, userInfo: [:])))
+        completion(.success(result: true))
+    }
+}
 class ChatEngineTests: XCTestCase {
     override func setUp() {
         super.setUp()
@@ -22,15 +28,19 @@ class ChatEngineTests: XCTestCase {
         let username = ""
         let password = ""
         let expectation = XCTestExpectation(description: "ChatManager: connect")
-        ChatManager.shared.connect(username: username, password: password, completion: { result in
+        let mockService = MockChatService()
+        let mockDI = DependencyContainer(service: mockService)
+        let manager = ChatManager.init(dependencies: mockDI)
+        manager.connect(username: username, password: password, completion: { result in
             switch result {
             case .success(let result): XCTAssert(result == true)
             case .failure(let error as NSError): XCTAssert( error.code != 0)
             }
-            // Fulfill the expectation to indicate that the background task has finished successfully.
             expectation.fulfill()
         })
-        // Wait until the expectation is fulfilled, with a timeout of 10 seconds.
         wait(for: [expectation], timeout: 10.0)
+    }
+    func testConfigureChatManager() {
+        //ChatManager.init(dependencies: DI.ChatManager)
     }
 }

@@ -15,9 +15,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "3CABC43C210CB790004F37BE"
-               BuildableName = "tddchat.app"
-               BlueprintName = "tddchat"
-               ReferencedContainer = "container:tddchat.xcodeproj">
+               BuildableName = "ChatApp.app"
+               BlueprintName = "ChatApp"
+               ReferencedContainer = "container:ChatApp.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -33,9 +33,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "3CABC450210CB792004F37BE"
-               BuildableName = "tddchatTests.xctest"
-               BlueprintName = "tddchatTests"
-               ReferencedContainer = "container:tddchat.xcodeproj">
+               BuildableName = "ChatAppTests.xctest"
+               BlueprintName = "ChatAppTests"
+               ReferencedContainer = "container:ChatApp.xcodeproj">
             </BuildableReference>
          </TestableReference>
          <TestableReference
@@ -43,9 +43,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "3CABC45B210CB792004F37BE"
-               BuildableName = "tddchatUITests.xctest"
-               BlueprintName = "tddchatUITests"
-               ReferencedContainer = "container:tddchat.xcodeproj">
+               BuildableName = "ChatAppUITests.xctest"
+               BlueprintName = "ChatAppUITests"
+               ReferencedContainer = "container:ChatApp.xcodeproj">
             </BuildableReference>
          </TestableReference>
          <TestableReference
@@ -63,9 +63,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "3CABC43C210CB790004F37BE"
-            BuildableName = "tddchat.app"
-            BlueprintName = "tddchat"
-            ReferencedContainer = "container:tddchat.xcodeproj">
+            BuildableName = "ChatApp.app"
+            BlueprintName = "ChatApp"
+            ReferencedContainer = "container:ChatApp.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
       <AdditionalOptions>
@@ -86,9 +86,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "3CABC43C210CB790004F37BE"
-            BuildableName = "tddchat.app"
-            BlueprintName = "tddchat"
-            ReferencedContainer = "container:tddchat.xcodeproj">
+            BuildableName = "ChatApp.app"
+            BlueprintName = "ChatApp"
+            ReferencedContainer = "container:ChatApp.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
       <AdditionalOptions>
@@ -105,9 +105,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "3CABC43C210CB790004F37BE"
-            BuildableName = "tddchat.app"
-            BlueprintName = "tddchat"
-            ReferencedContainer = "container:tddchat.xcodeproj">
+            BuildableName = "ChatApp.app"
+            BlueprintName = "ChatApp"
+            ReferencedContainer = "container:ChatApp.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>
