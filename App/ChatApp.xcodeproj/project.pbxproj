@@ -577,7 +577,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = TKH856G5A9;
 				INFOPLIST_FILE = tddchatTests/Info.plist;
@@ -598,7 +597,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = TKH856G5A9;
 				INFOPLIST_FILE = tddchatTests/Info.plist;
@@ -629,9 +627,10 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = nashu.com.tddchatUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_TARGET_NAME = tddchat;
+				TEST_TARGET_NAME = ChatApp;
 			};
 			name = Debug;
 		};
@@ -649,9 +648,10 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = nashu.com.tddchatUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_TARGET_NAME = tddchat;
+				TEST_TARGET_NAME = ChatApp;
 			};
 			name = Release;
 		};
