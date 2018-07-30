@@ -25,7 +25,7 @@ final class MockChatService: ChatService {
     }
     public func receive(completion: @escaping ChatManagerReceiveMessage) {
         DispatchQueue.main.asyncAfter(wallDeadline: .now() + 5.0) {
-            let message = Message(message: "Message", messageSender: "Another Person", username: "another@gmail.com")
+            let message = Message(message: "Message", messageSender: .someoneElse, username: "another@gmail.com")
             completion(.success(result: message))
         }
     }
