@@ -10,29 +10,31 @@ import Foundation
 import XCTest
 
 protocol TodoDelegate: class {
-    func completed(todo: Todo)
+    func completed(todo: WithDelegate)
 }
 
 typealias Completion = () -> Void
 
-class AnotherTodo: TodoDelegate {
+class WrapperWithClosure: TodoDelegate {
+    //Save copy of completion block for later call
     var completion: Completion?
-    var todo: Todo?
+    var todo: WithDelegate?
     init () {
-        self.todo = Todo(self, identifier: 1, title: "")
+        self.todo = WithDelegate(self, identifier: 1, title: "")
     }
-    func completed(todo: Todo) {
+    func completed(todo: WithDelegate) {
         print("AnotherTodo - completed - TodoDelegate")
+        //Closure is called once delegate function is completed
         self.completion?()
     }
     func send(message: String, completion: @escaping Completion) {
         print("AnotherTodo - send")
         self.completion = completion
-        self.todo?.asyncTask()
+        self.todo?.simulateAsyncLecacyCall()
     }
 }
 
-class Todo {
+class WithDelegate {
     var identifier: Int
     var title: String
     var completed: Bool = false {
@@ -48,7 +50,7 @@ class Todo {
         self.identifier = identifier
         self.title = title
     }
-    func asyncTask() {
+    func simulateAsyncLecacyCall() {
         DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) { [weak self] in
             if let strongSelf = self {
                 strongSelf.completed = true
@@ -60,7 +62,7 @@ class Todo {
 class DelegateToClosureTests: XCTestCase {
     func testSimpleTest() {
         let expectation = XCTestExpectation(description: "ChatManager: connect")
-        let anotherTodo = AnotherTodo()
+        let anotherTodo = WrapperWithClosure()
         anotherTodo.send(message: "") {
             expectation.fulfill()
         }
