@@ -13,6 +13,8 @@ public protocol ChatRoomDelegate: class {
 }
 
 public class ChatServiceSockets: NSObject, ChatService {
+    var receiveClosure: ChatManagerReceiveMessage?
+    //Socket properties
     weak var delegate: ChatRoomDelegate?
     var inputStream: InputStream!
     var outputStream: OutputStream!
@@ -21,12 +23,17 @@ public class ChatServiceSockets: NSObject, ChatService {
     // MARK: ChatService Protocol
     public func connect(username: String, password: String, completion: @escaping ChatManagerConnectCompletion) {
         setupNetworkCommunication()
-        joinChat(username: username)
-        completion(.success(result: true))
+        joinChat(username: username, completion: completion)
+    }
+    public func send(message: String, toContact: String, completion: @escaping ChatManagerSendCompletion) {
+        sendMessage(message: message, completion: completion)
+    }
+    public func receive(completion: @escaping ChatManagerReceiveMessage) {
+        self.receiveClosure = completion
     }
     // MARK: Sockets
     //1) Set up the input and output streams for message sending
-    func setupNetworkCommunication() {
+    private func setupNetworkCommunication() {
         var readStream: Unmanaged<CFReadStream>?
         var writeStream: Unmanaged<CFWriteStream>?
         CFStreamCreatePairWithSocketToHost(kCFAllocatorDefault,
@@ -43,21 +50,43 @@ public class ChatServiceSockets: NSObject, ChatService {
         inputStream.open()
         outputStream.open()
     }
-    func joinChat(username: String) {
+    private func joinChat(username: String, completion: @escaping ChatManagerConnectCompletion) {
         let data = "iam:\(username)".data(using: .ascii)!
         self.username = username
-        _ = data.withUnsafeBytes { outputStream.write($0, maxLength: data.count) }
+        let result = data.withUnsafeBytes { outputStream.write($0, maxLength: data.count) }
+        handleResult(result: result, completion: completion)
     }
-    func sendMessage(message: String) {
+    private func sendMessage(message: String, completion: @escaping ChatManagerSendCompletion) {
         let data = "msg:\(message)".data(using: .ascii)!
-        _ = data.withUnsafeBytes { outputStream.write($0, maxLength: data.count) }
+        let result = data.withUnsafeBytes { outputStream.write($0, maxLength: data.count) }
+        handleResult(result: result, completion: completion)
     }
-    func stopChatSession() {
+    private func stopChatSession() {
         inputStream.close()
         outputStream.close()
     }
 }
-
+// MARK: ChatServiceSockets
+private extension ChatServiceSockets {
+    func handleResult(result: Int, completion: @escaping ChatManagerConnectCompletion) {
+        if result == 0 {
+            print("Stream at capacity")
+            completion(.success(result: true))
+        } else if result == -1 {
+            print("Operation failed: \(String(describing: outputStream.streamError))")
+            let error = NSError(domain: "outputStream",
+                                code: result,
+                                userInfo: ["Operation failed": result])
+            completion(.failure(error: error))
+        } else {
+            print("The number of bytes written is \(result)")
+            let error = NSError(domain: "outputStream",
+                                code: result,
+                                userInfo: ["Operation partially failed": result])
+            completion(.failure(error: error))
+        }
+    }
+}
 // MARK: StreamDelegate / Sockets
 extension ChatServiceSockets: StreamDelegate {
     public func stream(_ aStream: Stream, handle eventCode: Stream.Event) {
@@ -87,6 +116,7 @@ extension ChatServiceSockets: StreamDelegate {
                 }
             }
             if let message = processedMessageString(buffer: buffer, length: numberOfBytesRead) {
+                receiveClosure?(.success(result: message))
                 delegate?.receivedMessage(message: message)
             }
         }
