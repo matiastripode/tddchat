@@ -8,14 +8,9 @@
 
 import Foundation
 
-public protocol ChatRoomDelegate: class {
-    func receivedMessage(message: Message)
-}
-
 public class ChatServiceSockets: NSObject, ChatService {
     var receiveClosure: ChatManagerReceiveMessage?
     //Socket properties
-    weak var delegate: ChatRoomDelegate?
     var inputStream: InputStream!
     var outputStream: OutputStream!
     var username = ""
@@ -117,7 +112,6 @@ extension ChatServiceSockets: StreamDelegate {
             }
             if let message = processedMessageString(buffer: buffer, length: numberOfBytesRead) {
                 receiveClosure?(.success(result: message))
-                delegate?.receivedMessage(message: message)
             }
         }
     }

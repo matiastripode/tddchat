@@ -14,4 +14,7 @@ public protocol DIContainer {
 
 public struct DependencyContainer: DIContainer {
     public var service: ChatService
+    public init(service: ChatService) {
+        self.service = service
+    }
 }
