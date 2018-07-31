@@ -23,7 +23,7 @@ public protocol ChatService {
 }
 public final class ChatManager: ChatService {
     private let dependencies: DependencyContainer
-    init(dependencies: DependencyContainer) {
+    public init(dependencies: DependencyContainer) {
         self.dependencies = dependencies
     }
     public func connect(username: String, password: String, completion:  @escaping ChatManagerConnectCompletion) {
