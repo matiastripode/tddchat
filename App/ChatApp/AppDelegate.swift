@@ -9,6 +9,7 @@
 import UIKit
 import Fabric
 import Crashlytics
+import chatengine
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {

@@ -35,15 +35,23 @@ class ChatRoomViewController: UIViewController {
   let tableView = UITableView()
   let messageInputBar = MessageInputView()
   
-  let chatRoom = ChatServiceSockets()
+  var chatRoom: ChatManager?
   
   var messages = [Message]()
   
   var username = ""
   
+func internalViewDidLoad() {
+    //App injecting dependencies to Chat Framework
+    let chatService = ChatServiceSockets()
+    let dependencies = DependencyContainer(service: chatService)
+    chatRoom = ChatManager(dependencies: dependencies)
+}
   override func viewWillAppear(_ animated: Bool) {
     super.viewWillAppear(animated)
-    
+    guard let chatRoom = chatRoom else {
+        return
+    }
     chatRoom.connect(username: "", password: "") { (result) in
         print("Connected to chat")
     }
@@ -64,6 +72,9 @@ class ChatRoomViewController: UIViewController {
 //MARK - Message Input Bar
 extension ChatRoomViewController: MessageInputDelegate {
   func sendWasTapped(message: String) {
+    guard let chatRoom = chatRoom else {
+        return
+    }
     chatRoom.send(message: message, toContact: "") { (result) in
         print(result)
     }

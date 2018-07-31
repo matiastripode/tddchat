@@ -37,6 +37,7 @@ extension ChatRoomViewController {
     NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillChange(notification:)), name: NSNotification.Name.UIKeyboardWillChangeFrame, object: nil)
     
     loadViews()
+    internalViewDidLoad()
   }
     @objc func keyboardWillChange(notification: NSNotification) {
     if let userInfo = notification.userInfo {
