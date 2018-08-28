@@ -19,4 +19,9 @@ http://try.crashlytics.com/
 https://fastlane.tools/
 https://travis-ci.com/ [How to configure Travis](https://www.youtube.com/watch?list=PLyjgjmI1UzlSUlaQD0RvLwwW-LSlJn-F6&time_continue=198&v=XMPOns7VIXI) 
 
+## Run 
+1 - Go to SocketServer and run sudo ./server
+To run the pre-compiled server, open your terminal, navigate to the starter materials directory and enter this command, followed by your password when prompted
+ `sudo ./server`
+2 - Build and run ChatApp xcode project
 
